@@ -6,9 +6,10 @@ export default function AppMenu() {
 
     return (
         <>
-            <h1>Vite + React</h1>
+            <h1>Keeps</h1>
             <ul className="menu">
-                <li><Link to="/" className={location.pathname === '/' ? 'active' : ''}>Home</Link></li>
+                <li><Link to="/" className={location.pathname === '/' ? 'active' : ''}><span className="menu-icon">🙋‍♀️</span>
+                    学习计划</Link></li>
                 <li><Link to="/dashboard" className={location.pathname === '/dashboard' ? 'active' : ''}>Dashboard</Link></li>
                 <li><Link to="/form" className={location.pathname === '/form' ? 'active' : ''}>Form</Link></li>
                 <li><NavLink to="/table">Table</NavLink></li>
