@@ -1,14 +1,96 @@
 import React, {useEffect, useState} from 'react';
 import axios from 'axios';
 import './Home.css';
+import { Space, Table, Tag } from 'antd';
+import type { TableProps } from 'antd';
+
+interface DataType {
+    key: string;
+    name: string;
+    age: number;
+    address: string;
+    tags: string[];
+}
 
 export default function Home() {
-    const [data, setData] = useState([]);
+    const [list, setList] = useState([]);
+    const columns: TableProps<DataType>['columns'] = [
+        {
+            title: 'Name',
+            dataIndex: 'name',
+            key: 'name',
+            render: (text) => <a>{text}</a>,
+        },
+        {
+            title: 'Age',
+            dataIndex: 'age',
+            key: 'age',
+        },
+        {
+            title: 'Address',
+            dataIndex: 'address',
+            key: 'address',
+        },
+        {
+            title: 'Tags',
+            key: 'tags',
+            dataIndex: 'tags',
+            render: (_, { tags }) => (
+                <>
+                    {tags.map((tag) => {
+                        let color = tag.length > 5 ? 'geekblue' : 'green';
+                        if (tag === 'loser') {
+                            color = 'volcano';
+                        }
+                        return (
+                            <Tag color={color} key={tag}>
+                                {tag.toUpperCase()}
+                            </Tag>
+                        );
+                    })}
+                </>
+            ),
+        },
+        {
+            title: 'Action',
+            key: 'action',
+            render: (_, record) => (
+                <Space size="middle">
+                    <a>Invite {record.name}</a>
+                    <a>Delete</a>
+                </Space>
+            ),
+        },
+    ];
+
+    const data: DataType[] = [
+        {
+            key: '1',
+            name: 'John Brown',
+            age: 32,
+            address: 'New York No. 1 Lake Park',
+            tags: ['nice', 'developer'],
+        },
+        {
+            key: '2',
+            name: 'Jim Green',
+            age: 42,
+            address: 'London No. 1 Lake Park',
+            tags: ['loser'],
+        },
+        {
+            key: '3',
+            name: 'Joe Black',
+            age: 32,
+            address: 'Sydney No. 1 Lake Park',
+            tags: ['cool', 'teacher'],
+        },
+    ];
 
     useEffect(() => {
         axios.get('http://localhost:8066/groups/get')
             .then(response => {
-                setData(response.data);
+                setList(response.data);
             })
             .catch(error => {
                 console.log(error);
@@ -19,10 +101,13 @@ export default function Home() {
         <>
             <div className="plan-list">
                 <ul>
-                    {data.map(post => (
+                    {list.map(post => (
                         <li key={post.id}>{post.name}</li>
                     ))}
                 </ul>
+            </div>
+            <div className="table-content">
+                <Table<DataType> columns={columns} dataSource={data} />
             </div>
         </>
     );

@@ -2,6 +2,7 @@
     width: 300px;
     height: 100vh;
     border-right: 1px solid #cccccc;
+    float: left;
     ul{
         margin: 0;
         padding-top: 30px;
@@ -11,4 +12,10 @@
             cursor: pointer;
         }
     }
+}
+
+.table-content{
+    float: left;
+    height: 100vh;
+    width: calc(100vw - 603px);
 }
