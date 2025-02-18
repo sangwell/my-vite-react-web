@@ -1,5 +1,6 @@
-import {createContext, useContext, useEffect, useReducer, useState} from "react";
+import {createContext, useContext, useEffect, useMemo, useReducer, useRef, useState} from "react";
 import {Button} from 'antd';
+import './Dashboard.css';
 
 export default function Dashboard() {
     const [data, setData] = useState(0);
@@ -51,8 +52,38 @@ export default function Dashboard() {
         }
     }, 0);
 
+    const usePow = (list: number[]) => {
+        return useMemo(() =>
+            list.map((item: number) => {
+                console.log("我是usePow");
+                return Math.pow(item, 2);
+            }), []
+        )
+    };
+
+    let [flag, setFlag] = useState(true);
+
+    const dataPow = usePow([1, 2, 3]);
+
+    const scrollRef = useRef<any>(null);
+    const [clientHeight, setClientHeight] = useState<number>(0);
+    const [scrollTop, setScrollTop] = useState<number>(0);
+    const [scrollHeight, setScrollHeight] = useState<number>(0);
+
+    const onScroll = () => {
+        if (scrollRef?.current) {
+            console.log('scrollRef', scrollRef)
+            let clientHeight = scrollRef?.current.clientHeight; //可视区域高度
+            let scrollTop = scrollRef?.current.scrollTop; //滚动条滚动高度
+            let scrollHeight = scrollRef?.current.scrollHeight; //滚动内容高度
+            setClientHeight(clientHeight);
+            setScrollTop(scrollTop);
+            setScrollHeight(scrollHeight);
+        }
+    };
+
     return (
-        <>
+        <div className="dashboard">
             <h1>Dashboard Page</h1>
             <hr/>
             <h2>useState，useEffect，useContext</h2>
@@ -84,6 +115,25 @@ export default function Dashboard() {
             </Button>
             <hr/>
             <h2>useMemo</h2>
-        </>
+            <div>数字集合：{JSON.stringify(dataPow)}</div>
+            <Button type="primary" onClick={() => setFlag((v) => !v)}>
+                状态切换{JSON.stringify(flag)}
+            </Button>
+
+            <h2>useRef</h2>
+            <hr/>
+            <div>
+                <p>可视区域高度：{clientHeight}</p>
+                <p>滚动条滚动高度：{scrollTop}</p>
+                <p>滚动内容高度：{scrollHeight}</p>
+            </div>
+            <div
+                style={{height: 200, border: "1px solid #000", overflowY: "auto"}}
+                ref={scrollRef}
+                onScroll={onScroll}
+            >
+                <div style={{height: 2000}}></div>
+            </div>
+        </div>
     );
 }
