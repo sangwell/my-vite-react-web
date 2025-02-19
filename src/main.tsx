@@ -2,6 +2,8 @@
 import { createRoot } from 'react-dom/client'
 import './index.css'
 import App from './App.tsx'
+import store from './store/store.ts';
+import { Provider } from 'react-redux';
 
 //严格模式会导致组件渲染两次
 /*createRoot(document.getElementById('root')!).render(
@@ -11,5 +13,7 @@ import App from './App.tsx'
 )*/
 
 createRoot(document.getElementById('root')!).render(
-    <App />
+    <Provider store={store}>
+        <App />
+    </Provider>
 )

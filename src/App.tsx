@@ -8,6 +8,7 @@ import Table from "./pages/Table.tsx";
 import AppMenu from "./components/AppMenu/AppMenu.tsx";
 import zhCN from 'antd/locale/zh_CN';
 import { ConfigProvider } from 'antd';
+import Widgets from "./pages/Widgets/Widgets.tsx";
 
 function App() {
 
@@ -23,6 +24,7 @@ function App() {
                             <Route path="/" element={<Home/>}/>
                             <Route path="/dashboard" element={<Dashboard/>}/>
                             <Route path="/form" element={<Form/>}/>
+                            <Route path="/widgets" element={<Widgets/>}/>
                             <Route path="/table" element={<Table/>}/>
                             <Route path="/about" element={<About/>}/>
                         </Routes>
