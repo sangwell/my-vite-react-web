@@ -9,6 +9,9 @@ import AppMenu from "./components/AppMenu/AppMenu.tsx";
 import zhCN from 'antd/locale/zh_CN';
 import { ConfigProvider } from 'antd';
 import Widgets from "./pages/Widgets/Widgets.tsx";
+import User from "./pages/User/User.tsx";
+import UserPosts from "./pages/User/UserPosts.tsx";
+import UserProfile from "./pages/User/UserProfile.tsx";
 
 function App() {
 
@@ -25,6 +28,10 @@ function App() {
                             <Route path="/dashboard" element={<Dashboard/>}/>
                             <Route path="/form" element={<Form/>}/>
                             <Route path="/widgets" element={<Widgets/>}/>
+                            <Route path="/user" element={<User/>}>
+                                <Route path="profile/:userId" element={<UserProfile />} />
+                                <Route path="posts/:userId" element={<UserPosts />} />
+                            </Route>
                             <Route path="/table" element={<Table/>}/>
                             <Route path="/about" element={<About/>}/>
                         </Routes>

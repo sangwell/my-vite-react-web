@@ -13,6 +13,7 @@ export default function AppMenu() {
                 <li><Link to="/dashboard" className={location.pathname === '/dashboard' ? 'active' : ''}>Dashboard</Link></li>
                 <li><Link to="/form" className={location.pathname === '/form' ? 'active' : ''}>Form</Link></li>
                 <li><NavLink to="/widgets">Widgets</NavLink></li>
+                <li><NavLink to="/user">User</NavLink></li>
                 <li><NavLink to="/table">Table</NavLink></li>
                 <li><NavLink to="/about">About</NavLink></li>
             </ul>

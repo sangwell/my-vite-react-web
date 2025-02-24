@@ -1,0 +1,16 @@
+.container{
+    display: flex;
+    .user-menu{
+        flex: 1;
+        max-width: 180px;
+        border-right: 1px solid #cccccc;
+        ul{
+            li{
+                list-style: none;
+            }
+        }
+    }
+    .user-page{
+        flex: 1;
+    }
+}
