@@ -4,7 +4,7 @@ import Home from "./pages/Home/Home.tsx";
 import About from "./pages/About.tsx";
 import Dashboard from "./pages/Dashboard/Dashboard.tsx";
 import Form from "./pages/Form/Form.tsx";
-import Table from "./pages/Table.tsx";
+import Table from "./pages/Table/Table.tsx";
 import AppMenu from "./components/AppMenu/AppMenu.tsx";
 import zhCN from 'antd/locale/zh_CN';
 import { ConfigProvider } from 'antd';
