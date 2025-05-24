@@ -12,6 +12,7 @@ import Widgets from "./pages/Widgets/Widgets.tsx";
 import User from "./pages/User/User.tsx";
 import UserPosts from "./pages/User/UserPosts.tsx";
 import UserProfile from "./pages/User/UserProfile.tsx";
+import Chart from './pages/Chart/Chart.tsx';
 
 function App() {
 
@@ -33,6 +34,7 @@ function App() {
                                 <Route path="posts/:userId" element={<UserPosts />} />
                             </Route>
                             <Route path="/table" element={<Table/>}/>
+                            <Route path="/chart" element={<Chart/>}/>
                             <Route path="/about" element={<About/>}/>
                         </Routes>
                     </div>

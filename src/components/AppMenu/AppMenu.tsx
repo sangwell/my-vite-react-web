@@ -15,6 +15,7 @@ export default function AppMenu() {
                 <li><NavLink to="/widgets">Widgets</NavLink></li>
                 <li><NavLink to="/user">User</NavLink></li>
                 <li><NavLink to="/table">Table(动态加载)</NavLink></li>
+                <li><NavLink to="/chart">Chart</NavLink></li>
                 <li><NavLink to="/about">About</NavLink></li>
             </ul>
         </>
